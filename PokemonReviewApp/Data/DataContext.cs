@@ -9,14 +9,15 @@ namespace PokemonReviewApp.Data
         {
 
         }
-        public DbSet<Category> Categories;
-        public DbSet<Country> Countries;
-        public DbSet<Owner> Owners;
-        public DbSet<Pokemon> Pokemons;
-        public DbSet<PokemonCategory> PokemonCategories;
-        public DbSet<PokemonOwner> PokemonOwners;
-        public DbSet<Review> Reviews;
-        public DbSet<Reviewer> Reviewers;
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Pokemon> Pokemon { get; set; }
+        public DbSet<PokemonOwner> PokemonOwners { get; set; }
+        public DbSet<PokemonCategory> PokemonCategories { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Reviewer> Reviewers { get; set; }
         // Cấu hình mô hình dữ liệu của ứng dụng.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

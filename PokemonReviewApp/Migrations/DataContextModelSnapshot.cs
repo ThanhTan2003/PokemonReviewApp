@@ -36,7 +36,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Country", b =>
@@ -53,7 +53,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Country");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Owner", b =>
@@ -83,7 +83,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Owner");
+                    b.ToTable("Owners");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Pokemon", b =>
@@ -118,7 +118,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("PokemonCategory");
+                    b.ToTable("PokemonCategories");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.PokemonOwner", b =>
@@ -133,7 +133,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("PokemonOwner");
+                    b.ToTable("PokemonOwners");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Review", b =>
@@ -167,7 +167,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasIndex("ReviewerId");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Reviewer", b =>
@@ -188,7 +188,7 @@ namespace PokemonReviewApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reviewer");
+                    b.ToTable("Reviewers");
                 });
 
             modelBuilder.Entity("PokemonReviewApp.Models.Owner", b =>

@@ -12,7 +12,7 @@ namespace PokemonReviewApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,11 +21,11 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Country",
+                name: "Countries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,7 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Country", x => x.Id);
+                    table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,7 +52,7 @@ namespace PokemonReviewApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviewer",
+                name: "Reviewers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -62,11 +62,11 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviewer", x => x.Id);
+                    table.PrimaryKey("PK_Reviewers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Owner",
+                name: "Owners",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -78,17 +78,17 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Owner", x => x.Id);
+                    table.PrimaryKey("PK_Owners", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Owner_Country_CountryId",
+                        name: "FK_Owners_Countries_CountryId",
                         column: x => x.CountryId,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PokemonCategory",
+                name: "PokemonCategories",
                 columns: table => new
                 {
                     PokemonId = table.Column<int>(type: "int", nullable: false),
@@ -96,15 +96,15 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PokemonCategory", x => new { x.PokemonId, x.CategoryId });
+                    table.PrimaryKey("PK_PokemonCategories", x => new { x.PokemonId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_PokemonCategory_Category_CategoryId",
+                        name: "FK_PokemonCategories_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PokemonCategory_Pokemon_PokemonId",
+                        name: "FK_PokemonCategories_Pokemon_PokemonId",
                         column: x => x.PokemonId,
                         principalTable: "Pokemon",
                         principalColumn: "Id",
@@ -112,7 +112,7 @@ namespace PokemonReviewApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Review",
+                name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -125,23 +125,23 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Review", x => x.Id);
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Review_Pokemon_PokemonId",
+                        name: "FK_Reviews_Pokemon_PokemonId",
                         column: x => x.PokemonId,
                         principalTable: "Pokemon",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Review_Reviewer_ReviewerId",
+                        name: "FK_Reviews_Reviewers_ReviewerId",
                         column: x => x.ReviewerId,
-                        principalTable: "Reviewer",
+                        principalTable: "Reviewers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PokemonOwner",
+                name: "PokemonOwners",
                 columns: table => new
                 {
                     PokemonId = table.Column<int>(type: "int", nullable: false),
@@ -149,15 +149,15 @@ namespace PokemonReviewApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PokemonOwner", x => new { x.PokemonId, x.OwnerId });
+                    table.PrimaryKey("PK_PokemonOwners", x => new { x.PokemonId, x.OwnerId });
                     table.ForeignKey(
-                        name: "FK_PokemonOwner_Owner_OwnerId",
+                        name: "FK_PokemonOwners_Owners_OwnerId",
                         column: x => x.OwnerId,
-                        principalTable: "Owner",
+                        principalTable: "Owners",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PokemonOwner_Pokemon_PokemonId",
+                        name: "FK_PokemonOwners_Pokemon_PokemonId",
                         column: x => x.PokemonId,
                         principalTable: "Pokemon",
                         principalColumn: "Id",
@@ -165,28 +165,28 @@ namespace PokemonReviewApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Owner_CountryId",
-                table: "Owner",
+                name: "IX_Owners_CountryId",
+                table: "Owners",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PokemonCategory_CategoryId",
-                table: "PokemonCategory",
+                name: "IX_PokemonCategories_CategoryId",
+                table: "PokemonCategories",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PokemonOwner_OwnerId",
-                table: "PokemonOwner",
+                name: "IX_PokemonOwners_OwnerId",
+                table: "PokemonOwners",
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Review_PokemonId",
-                table: "Review",
+                name: "IX_Reviews_PokemonId",
+                table: "Reviews",
                 column: "PokemonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Review_ReviewerId",
-                table: "Review",
+                name: "IX_Reviews_ReviewerId",
+                table: "Reviews",
                 column: "ReviewerId");
         }
 
@@ -194,28 +194,28 @@ namespace PokemonReviewApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PokemonCategory");
+                name: "PokemonCategories");
 
             migrationBuilder.DropTable(
-                name: "PokemonOwner");
+                name: "PokemonOwners");
 
             migrationBuilder.DropTable(
-                name: "Review");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Owner");
+                name: "Owners");
 
             migrationBuilder.DropTable(
                 name: "Pokemon");
 
             migrationBuilder.DropTable(
-                name: "Reviewer");
+                name: "Reviewers");
 
             migrationBuilder.DropTable(
-                name: "Country");
+                name: "Countries");
         }
     }
 }
